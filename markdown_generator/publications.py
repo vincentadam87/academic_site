@@ -81,13 +81,16 @@ for row, item in publications.iterrows():
     
     md += "\ndate: " + str(item.pub_date) 
     
+    md += "\npubtype: " + item.pubtype
     md += "\nvenue: '" + html_escape(item.venue) + "'"
     
     if len(str(item.paper_url)) > 5:
         md += "\npaperurl: '" + item.paper_url + "'"
     
     md += "\ncitation: '" + html_escape(item.citation) + "'"
-    
+   
+    md += "\npubtype: " + item.pubtype
+ 
     md += "\n---"
     
     ## Markdown description for individual page
@@ -99,10 +102,9 @@ for row, item in publications.iterrows():
         md += "\n" + html_escape(item.excerpt) + "\n"
         
     md += "\nRecommended citation: " + item.citation
-    
+  
     md_filename = os.path.basename(md_filename)
        
     with open("../_publications/" + md_filename, 'w') as f:
         f.write(md)
-
 
